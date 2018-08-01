@@ -1,0 +1,30 @@
+<!--
+<div *ngIf="cryptos">
+    <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
+      <span class="left">{{ crypto }}</span>
+      <span class="right">{{ cryptos[crypto].EUR | currency:'EUR':true}}</span>
+    </div>
+  </div>
+-->
+<div id="box">
+  <h2>Konverzija valuta</h2>
+  <table>
+    <tr>
+      <td><input id="fromAmount" #vrijednost type="text" size="15" /></td>
+      <td>
+        <select [(ngModel)]="cryptoValue">
+          <option *ngFor="let crypto of cryptoCurrencies" [value]="crypto.value">{{crypto.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+        <td><input id="toAmount" type="text" disabled size="15" value="{{money| number : '1.2-2'}}"/></td>
+        <td>
+          <select [(ngModel)]="moneyValue">
+            <option *ngFor="let mon of moneyCurrencies" [value]="mon.value">{{mon.name}}</option>
+          </select>
+        </td>
+      </tr>
+  </table>
+  <button (click)="printSelected(vrijednost.value)">Convert</button>
+</div>
