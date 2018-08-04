@@ -6,25 +6,16 @@
     </div>
   </div>
 -->
-<div id="box">
+<div id="crypto-container">
   <h2>Konverzija valuta</h2>
-  <table>
-    <tr>
-      <td><input id="fromAmount" #vrijednost type="text" size="15" /></td>
-      <td>
-        <select [(ngModel)]="cryptoValue">
-          <option *ngFor="let crypto of cryptoCurrencies" [value]="crypto.value">{{crypto.name}}</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-        <td><input id="toAmount" type="text" disabled size="15" value="{{money| number : '1.2-2'}}"/></td>
-        <td>
-          <select [(ngModel)]="moneyValue">
-            <option *ngFor="let mon of moneyCurrencies" [value]="mon.value">{{mon.name}}</option>
-          </select>
-        </td>
-      </tr>
-  </table>
-  <button (click)="printSelected(vrijednost.value)">Convert</button>
+  <input id="fromAmount" [(ngModel)]="vrijednost" (ngModelChange)="promjena()" type="text" size="15" [value]="vrijednost"/>
+  <select [(ngModel)]="cryptoValue" (ngModelChange)="izmjena()">
+    <option *ngFor="let crypto of cryptoCurrencies" [value]="crypto.value">{{crypto.name}}</option>
+  </select><br><br>
+  <span class="left">EURO</span>
+  <span class="right">{{drugiNiz[0]}}</span><br>
+  <span class="left">DOLLAR</span>
+  <span class="right">{{drugiNiz[1]}}</span><br>
+  <span class="left">AUSTALIRA</span>
+  <span class="right">{{drugiNiz[2]}}</span><br>
 </div>
